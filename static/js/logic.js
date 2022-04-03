@@ -8,7 +8,32 @@ console.log("working");
 //     ],
 //     zoom: 4
 //   });
-let map = L.map('mapid').setView([34.0522,-118.2437],14);
+let map = L.map('mapid').setView([37.6213, -122.3790], 5);
+
+
+// Coordinates for each point to be used in the line.
+// Coordinates for each point to be used in the polyline.
+let line = [
+  [33.9416, -118.4085],
+  [37.6213, -122.3790],
+  [40.7899, -111.9791],
+  [47.4502, -122.3088]
+];
+
+let line2 = [
+  [40.7128, -74.0059],
+  [41.8781, -87.6298],
+  [29.7604, -95.3698],
+  [34.0522, -118.2437],
+  [33.4484, -112.0740]
+];
+
+// Create a polyline using the line coordinates and make the line red.
+L.polyline(line2, {
+  color: "blue",
+  weight: 4,
+  opacity: 0.5
+}).addTo(map);
 
 //  Add a marker to the map for Los Angeles, California.
 // let marker = L.circle([34.0522, -118.2437], {
@@ -16,17 +41,17 @@ let map = L.map('mapid').setView([34.0522,-118.2437],14);
 // }).addTo(map);
 
 // Get data from cities.js
-let cityData = cities;
+// let cityData = cities;
 
-// Loop through the cities array and create one marker for each city.
-cityData.forEach(function(city) {
-  console.log(city)
-  L.circleMarker(city.location,{
-    radius: city.population/100000
-  })
-  .bindPopup("<h2>" + city.city + ", " + city.state + "</h2> <hr> <h3>Population " + city.population.toLocaleString() + "</h3>")
-.addTo(map);
-});
+// // Loop through the cities array and create one marker for each city.
+// cityData.forEach(function(city) {
+//   console.log(city)
+//   L.circleMarker(city.location,{
+//     radius: city.population/100000
+//   })
+//   .bindPopup("<h2>" + city.city + ", " + city.state + "</h2> <hr> <h3>Population " + city.population.toLocaleString() + "</h3>")
+// .addTo(map);
+// });
 
 // We create the tile layer that will be the background of our map.
 let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', {
